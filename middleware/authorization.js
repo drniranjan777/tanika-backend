@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { JWTKeys } = require("../config/constants");
+const { JWTKeys } = require("../utils/config/constants");
 
 // Secret key (set this securely via environment variable in production)
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";

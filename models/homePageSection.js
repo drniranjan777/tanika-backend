@@ -1,5 +1,5 @@
 const { DataTypes, Model } = require("sequelize");
-const sequelize = require("../config/database"); // import your Sequelize instance
+const sequelize = require("../utils/config/database");
 
 const HomePageSectionType = ["BANNER", "PRODUCTS", "CUSTOM"]; // Adjust as needed
 

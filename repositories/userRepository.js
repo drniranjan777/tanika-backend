@@ -1,6 +1,6 @@
 const { Op } = require("sequelize");
-const sequelize = require("../config/database");
-const { runTransaction } = require("../config/dbTransactionManager");
+const sequelize = require("../utils/config/database");
+const { runTransaction } = require("../utils/config/dbTransactionManager");
 const {
   User,
   OTPSessions,

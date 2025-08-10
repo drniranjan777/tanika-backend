@@ -5,7 +5,7 @@ const jwtUtils = require("../utils/jwtUtils");
 const validator = require("../utils/validator"); // Joi or custom validator
 const pagingUtils = require("../utils/pagingUtils");
 const { generateUUID } = require("../utils/generateUUID");
-const { JWTKeys, USER_LOGIN_TYPE } = require("../config/constants");
+const { JWTKeys, USER_LOGIN_TYPE } = require("../utils/config/constants");
 
 class UserService {
   async getTotalUsers() {

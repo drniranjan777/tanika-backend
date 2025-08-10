@@ -1,5 +1,5 @@
 const { DataTypes, Model } = require("sequelize");
-const sequelize = require("../config/database"); // import your Sequelize instance
+const sequelize = require("../utils/config/database");
 
 const MenuType = ["ITEM", "CATEGORY", "LINK"]; // Example enum, update as needed
 const Location = ["HEADER", "FOOTER", "SIDEBAR"]; // Example enum

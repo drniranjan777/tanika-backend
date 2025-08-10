@@ -2,8 +2,8 @@ const { Address } = require("../models"); // Sequelize Address model
 const {
   runTransactionWithSchema,
   runTransaction,
-} = require("../config/dbTransactionManager");
-const sequelize = require("../config/database");
+} = require("../utils/config/dbTransactionManager");
+const sequelize = require("../utils/config/database");
 
 const PRIMARY_SCHEMA = "public"; // change if multi-schema used
 

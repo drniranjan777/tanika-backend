@@ -1,5 +1,5 @@
 const { Op, Sequelize } = require("sequelize");
-const sequelize = require("../config/database");
+const sequelize = require("../utils/config/database");
 const {
   Product,
   ProductProperty,
@@ -11,7 +11,7 @@ const {
   ProductSection,
   ProductsAndSections,
 } = require("../models");
-const { runTransaction } = require("../config/dbTransactionManager");
+const { runTransaction } = require("../utils/config/dbTransactionManager");
 
 class ProductRepository {
   constructor(perPage = 20) {
