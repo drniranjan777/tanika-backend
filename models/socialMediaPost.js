@@ -1,5 +1,6 @@
 const { DataTypes, Model } = require("sequelize");
-const sequelize = require("../config/database"); // import your Sequelize instance
+// const sequelize = require("../config/database"); // import your Sequelize instance
+const sequelize = require("../utils/config/database");
 
 const SocialMediaPostContentType = ["IMAGE", "VIDEO", "TEXT"]; // Update per your enum
 
