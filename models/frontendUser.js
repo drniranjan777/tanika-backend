@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../utils/config/database");
 
-const HomepageGrid = sequelize.define(
+const FrontendUser = sequelize.define(
   "FrontendUser",
   {
     id: {
@@ -9,24 +9,35 @@ const HomepageGrid = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
-
-    name:{
-        type:DataTypes.STRING,
-        allowNull:false
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    gmail:{
-        type:DataTypes.STRING,
-        allowNull:false
+    number: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
-    password:{
-        type:DataTypes.STRING,
-        allowNull:false
-    }
+    gmail: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    resetToken: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    resetTokenExpiry: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
   },
   {
     tableName: "frontend_users",
-    timestamps: false, // Set to true if you need createdAt/updatedAt
+    timestamps: false,
   }
 );
 
-module.exports = HomepageGrid;
+module.exports = FrontendUser;

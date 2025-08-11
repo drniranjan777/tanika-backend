@@ -4,6 +4,9 @@ const testimonialService = require("../services/testimonialService");
 const { authorizedAdmin } = require("../middleware/authorization");
 const asyncHandler = require("express-async-handler");
 
+const {
+  validateCreateTestimonial
+} = require("../validators/testimonialValidator");
 
 router.get(
   "/",
@@ -27,7 +30,13 @@ router.post(
   "/",
   authorizedAdmin,
   asyncHandler(async (req, res) => {
-    const request = req.body;
+  const request = req.body;
+
+  const { error } = validateCreateTestimonial(request);
+  if (error) {
+    return res.status(400).json({ message: error.details[0].message });
+  }
+
     const created = await testimonialService.addTestimonial(request);
     res.json({ status: 200, data: created });
   })

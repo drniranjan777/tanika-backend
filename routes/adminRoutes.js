@@ -3,8 +3,8 @@
 const express = require("express");
 const router = express.Router();
 const { authorizedAdmin } = require("../middleware/authorization");
-const AdminService  = require("../services/adminService"); 
-const adminService = new AdminService()
+const adminService = require("../services/adminService"); 
+// const adminService = new AdminService()
 const userService = require("../services/userService"); // assuming you have one
 const { DataNotFound } = require("../errors");
 

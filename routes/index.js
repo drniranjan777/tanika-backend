@@ -15,8 +15,9 @@ const uiRoutes = require("./uiRoutes");
 const wishlistRoutes = require("./wishlistRoutes");
 const testimonialRoutes = require("./testimonialRoutes")
 const homePageGridRoutes = require("./homepageGridRoutes")
+const userRoutes = require("./frontendUserRoute")
 
-router.use("/auth", userAuthRoutes);
+// router.use("/auth", userAuthRoutes);
 router.use("/address", addressRoutes);
 router.use("/cart", cartRoutes);
 router.use("/products", productRoutes);
@@ -29,5 +30,6 @@ router.use("/ui", uiRoutes);
 router.use("/wishlist", wishlistRoutes);
 router.use("/testimonial", testimonialRoutes);
 router.use("/homepage-grid", homePageGridRoutes);
+router.use("/auth", userRoutes);
 
 module.exports = router;
