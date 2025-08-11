@@ -3,8 +3,9 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const UserModel = require("../models/frontendUser");
 const UserRepository = require("../repositories/frontendUserRepository");
+const { sendEmail } = require("../utils/mailer");
 
-const JWT_SECRET = "your_jwt_secret_key"; // Move to .env for production
+const JWT_SECRET = process.env.JWT_SECRET;
 
 class UserService {
   constructor() {
@@ -52,10 +53,24 @@ class UserService {
 
     await this.repository.setResetToken(email, token, expiry);
 
-    const resetLink = `https://your-frontend.com/reset-password?token=${token}`;
+    // const resetLink = `https://your-frontend.com/reset-password?token=${token}`;
     
-    // Replace with actual email service
-    console.log(`🔗 Reset Link: ${resetLink}`);
+    // // Replace with actual email service
+    // console.log(`🔗 Reset Link: ${resetLink}`);
+
+    const resetLink = `http://localhost:9080/api/auth/reset-password?token=${token}`;
+
+    const subject = "Reset Your Password || Tanika Design ";
+    const html = `
+      <p>Hello </p>
+      <p>You requested to reset your password.</p>
+      <p><a href="${resetLink}">Click here to reset your password</a></p>
+      <p>This link will expire in 1 hour.</p>
+      <br />
+      <p>If you didn't request this, please ignore this email.</p>
+    `;
+
+     await sendEmail(email, subject, html);
 
     return { message: "Password reset link has been sent to your email." };
   }
