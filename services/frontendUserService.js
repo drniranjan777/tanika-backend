@@ -5,6 +5,7 @@ const UserModel = require("../models/frontendUser");
 const UserRepository = require("../repositories/frontendUserRepository");
 const { sendEmail } = require("../utils/mailer");
 
+
 const JWT_SECRET = process.env.JWT_SECRET;
 
 class UserService {
@@ -15,6 +16,7 @@ class UserService {
   async registerUser(userData) {
     const existing = await this.repository.findByEmail(userData.gmail);
     if (existing) {
+
       throw new Error("Email already exists");
     }
 
@@ -35,7 +37,9 @@ class UserService {
     if (!user) throw new Error("Invalid email or password");
 
     const isMatch = await bcrypt.compare(password, user.password);
+   
     if (!isMatch) throw new Error("Invalid email or password");
+
 
     const token = jwt.sign({ id: user.id, gmail: user.gmail }, JWT_SECRET, {
       expiresIn: "1d",
@@ -58,7 +62,7 @@ class UserService {
     // // Replace with actual email service
     // console.log(`🔗 Reset Link: ${resetLink}`);
 
-    const resetLink = `http://localhost:9080/api/auth/reset-password?token=${token}`;
+    const resetLink = `http://localhost:3000/reset-password?token=${token}`;
 
     const subject = "Reset Your Password || Tanika Design ";
     const html = `

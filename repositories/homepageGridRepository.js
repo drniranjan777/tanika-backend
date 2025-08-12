@@ -5,9 +5,17 @@ class HomepageGridRepository {
 
   async insertItem(item) {
     const result = await this.HomepageGrid.create({
-      image1: item.image1,
-      image2: item.image2,
-      video: item.video,
+      image1_url: item.image1Url,
+      image1_link_name: item.image1LinkName,
+      image1_link_url: item.image1LinkUrl,
+
+      image2_url: item.image2Url,
+      image2_link_name: item.image2LinkName,
+      image2_link_url: item.image2LinkUrl,
+
+      video_url: item.videoUrl,
+      video_link_name: item.videoLinkName,
+      video_link_url: item.videoLinkNameUrl,
     });
     return !!result;
   }
@@ -23,9 +31,17 @@ class HomepageGridRepository {
   async updateItem(id, updatedItem) {
     const [updatedCount] = await this.HomepageGrid.update(
       {
-        image1: updatedItem.image1,
-        image2: updatedItem.image2,
-        video: updatedItem.video,
+        image1_url: updatedItem.image1_url,
+        image1_link_name: updatedItem.image1_link_name,
+        image1_link_url: updatedItem.image1_link_url,
+
+        image2_url: updatedItem.image2_url,
+        image2_link_name: updatedItem.image2_link_name,
+        image2_link_url: updatedItem.image2_link_url,
+
+        video_url: updatedItem.video_url,
+        video_link_name: updatedItem.video_link_name,
+        video_link_url: updatedItem.video_link_url,
       },
       {
         where: { id },

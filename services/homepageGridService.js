@@ -11,6 +11,7 @@ class HomepageGridService {
   }
 
   async addItem(request) {
+    // Make sure request contains all required fields before calling insert
     return await this.repository.insertItem(request);
   }
 
@@ -28,11 +29,22 @@ class HomepageGridService {
       throw new Error("Item not found");
     }
 
+    // Use new fields and fallback to existing values if not provided in request
     const updated = {
-      image1: request.image1 || existing.image1,
-      image2: request.image2 || existing.image2,
-      video: request.video || existing.video,
+      // For files, if request contains a new file, update with that; otherwise keep existing
+      image1_url: request.image1 ? request.image1 : existing.image1_url,
+      image1_link_name: request.image1LinkName || existing.image1_link_name,
+      image1_link_url: request.image1LinkUrl || existing.image1_link_url,
+
+      image2_url: request.image2 ? request.image2 : existing.image2_url,
+      image2_link_name: request.image2LinkName || existing.image2_link_name,
+      image2_link_url: request.image2LinkUrl || existing.image2_link_url,
+
+      video_url: request.video ? request.video : existing.video_url,
+      video_link_name: request.videoLinkName || existing.video_link_name,
+      video_link_url: request.videoLinkNameUrl || existing.video_link_url,
     };
+
 
     const success = await this.repository.updateItem(id, updated);
     if (!success) {

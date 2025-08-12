@@ -10,24 +10,48 @@ const HomepageGrid = sequelize.define(
       autoIncrement: true,
     },
 
-    image1: {
+    image1_url: {
       type: DataTypes.STRING,
-      allowNull: false, // Change to false if required
+      allowNull: false,
     },
-
-    image2: {
+    image1_link_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    image1_link_url: {
       type: DataTypes.STRING,
       allowNull: false,
     },
 
-    video: {
+    image2_url: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    image2_link_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    image2_link_url: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    video_url: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    video_link_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    video_link_url: {
       type: DataTypes.STRING,
       allowNull: false,
     },
   },
   {
     tableName: "homepagegrid",
-    timestamps: false, // Set to true if you need createdAt/updatedAt
+    timestamps: false, // or true if you want createdAt/updatedAt
   }
 );
 
